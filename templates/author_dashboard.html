@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'content'%}
+
+
+<div style="background-color: lightcyan;">
+    <div class="container mt-5 ">
+        {% for message in messages%}
+        <div class="alert alert-info ml-5" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        <h1 class="text-center display -5 ">THIS IS USER DASHBOARD</h1>
+        <div class="add_new my-4">
+            <a href="author_add_blog" class="btn btn-outline-primary">ADD NEW</a>
+        </div>
+        <div>
+            <table class="author_blogs_table">
+                <tr>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Created_at</th>
+                    <th >Category</th>
+                    <th>Action</th>
+
+                </tr>
+                {% for blog in blogs %}
+                <tr>
+                    <td class="blog_title_table">{{ blog.title}}</td>
+                    <td><img src="{{ blog.imageURL}}" alt="" width="200"></td>
+                    <td class="blog_desc_table">{{ blog.description | truncatewords:40}}</td>
+                    <td >{{ blog.created_at}}</td>
+                    <td>{{ blog.category}}</td>
+                    <td><a href="author_update_blog/{{blog.id}}" class="m-2 btn btn-primary">UPDATE</a>
+                        <a href="author_delete_blog/{{blog.id}}" class="m-2 btn btn-primary">DELETE</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

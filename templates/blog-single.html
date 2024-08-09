@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'content'%}
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 single-content">
+
+      <p class="mb-5">
+        <img src="{{blogkey.imageURL}}" alt="Image" class="img-fluid">
+      </p>
+      <h1 class="mb-4">
+        {{ blogkey.title }}
+      </h1>
+      <div class="post-meta d-flex mb-5">
+        <div class="bio-pic mr-3">
+          <img src="{% static 'images/person_1.jpg' %}" alt="Image" class="img-fluidid">
+        </div>
+        <div class="vcard">
+          <span class="d-block"><a href="#">{{ blogkey.author}}</a> in <a href="#">{{ blogkey.category }}</a></span>
+          <span class="date-read">{{ blogkey.created_at }}</span>
+        </div>
+      </div>
+
+      <p>{{ blogkey.description }}</p>
+     
+
+    </div>
+
+
+    <div class="col-lg-3 ml-auto">
+      <div class="section-title">
+        <h2>Popular Posts</h2>
+      </div>
+      {% for blogs in blog %}
+      <div class="trend-entry d-flex">
+        <div class="number align-self-start">{{blogs.id}}</div>
+        <div class="trend-contents">
+          <h2><a href="blog-single.html">{{blogs.title}}</a></h2>
+          <div class="post-meta">
+            <span class="d-block"><a href="#">{{blogs.author}}</a> in <a href="#">{{blogs.category}}</a></span>
+            <span class="date-read">{{blogs.created_at}}<span class="mx-1">&bullet;</span> <span
+                class="icon-star2"></span></span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+ 
+    </div>
+
+
+  </div>
+
+</div>
+</div>
+
+
+
+{% endblock %}

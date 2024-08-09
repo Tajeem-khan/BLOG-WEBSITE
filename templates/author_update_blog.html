@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'content'%}
+<div style="background-color: rgb(88, 88, 10);">
+
+    <div class="container mt-5">
+        <h1 class="text-center display -5">Enter details to UPDATE</h1>
+        <form method="post" enctype="multipart/form-data ">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Title</label>
+                    <input type="text" class="form-control" id="inputEmail4" value="{{ blogs.title }}" name="title">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="inputPassword4">Description</label>
+                    <textarea class="form-control" name="description" id="" cols="30" rows="7">
+                    {{ blogs.description }}
+                </textarea>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label for="inputState">Upload image</label>
+                    <input type="file" class="form-control" name="image" id="">
+
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary ml-5">Upload</button>
+
+
+        </form>
+    </div>
+</div>
+{% endblock %}
